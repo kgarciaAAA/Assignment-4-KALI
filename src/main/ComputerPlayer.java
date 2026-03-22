@@ -1,9 +1,12 @@
 package main;
 
-import java.util.Random;
-
 public class ComputerPlayer extends Player {
-    private final Random randomNum = new Random();
+    private final ComputerStrategy strat;
+
+    //Default Constructor
+    public ComputerPlayer(ComputerStrategy strat) {
+        this.strat = strat;
+    }
 
     /**
      * Uses the random library to generate a random number from 0-2,
@@ -12,7 +15,6 @@ public class ComputerPlayer extends Player {
      */
     @Override
     public Move getPlayerMove() {
-        int computerMove = randomNum.nextInt(3);
-        return Move.convertToMove(computerMove);
+        return strat.computerStrategyMove();
     }
 }

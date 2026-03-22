@@ -4,8 +4,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class HumanPlayer extends Player {
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
+
+    // Default Constructor
+    public HumanPlayer(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    
     /**
      * Calls validateInput() to get users Choice as an int and returns the choice
      * as a Move enum value

@@ -23,6 +23,7 @@ public class Game {
      * Begins and manages the entire game session
      */
     public void startGame() {
+        System.out.println("**** Game Start ****\n");
         for (int round = 1; round <= numberOfRounds; round++) {
             System.out.print("Round " + round + " - ");
 
