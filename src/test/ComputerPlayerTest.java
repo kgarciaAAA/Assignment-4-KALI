@@ -1,17 +1,20 @@
+
 package test;
 
 import main.ComputerPlayer;
 import main.Move;
 import java.util.HashSet;
 import java.util.Set;
+
+import main.RandomStrategy;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ComputerPlayerTest {
-    
+
     @Test
     public void testRandomness(){
-        ComputerPlayer computer = new ComputerPlayer();
+        ComputerPlayer computer = new ComputerPlayer(new RandomStrategy());
         Set<Move> previousMoves = new HashSet<>();
         // Make previousMoves a HashSet so it will store only unique values, no duplicates
 
