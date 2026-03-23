@@ -17,4 +17,12 @@ public class ComputerPlayer extends Player {
     public Move getPlayerMove() {
         return strat.computerStrategyMove();
     }
+
+    public void recordHumanMove(Move humanMove) {
+
+    }
+
+    public void recordComputerMove(Move computerMove) {
+
+    }
 }
