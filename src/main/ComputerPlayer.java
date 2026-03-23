@@ -18,7 +18,13 @@ public class ComputerPlayer extends Player {
         return strat.computerStrategyMove();
     }
 
+    @Override
     public void addGameRoundHistory(Move playerMove, Move computerMove) {
         strat.addGameRoundHistory(playerMove, computerMove);
+    }
+
+    @Override
+    public void saveData(){
+        strat.saveData();
     }
 }
