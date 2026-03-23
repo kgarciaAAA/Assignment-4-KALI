@@ -17,4 +17,8 @@ public class ComputerPlayer extends Player {
     public Move getPlayerMove() {
         return strat.computerStrategyMove();
     }
+
+    public void addGameRoundHistory(Move playerMove, Move computerMove) {
+        strat.addGameRoundHistory(playerMove, computerMove);
+    }
 }

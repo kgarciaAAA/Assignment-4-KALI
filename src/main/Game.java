@@ -28,12 +28,11 @@ public class Game {
             System.out.print("Round " + round + " - ");
 
             GameRound gameRound = new GameRound(humanPlayer, computerPlayer, gameLogic);
-
+            computerPlayer.addGameRoundHistory(gameRound.getHumanMove(), gameRound.getComputerMove());
             Result roundResult = gameRound.getRoundResult();
             displayResult.printRoundResult(gameRound.getHumanMove(), gameRound.getComputerMove(), roundResult);
             scoreBoard.recordResult(roundResult);
             scoreBoard.displayScore();
-
         }
         Result gameResult = scoreBoard.getGameWinner();
         displayResult.printGameResult(gameResult);
