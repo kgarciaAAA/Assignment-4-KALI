@@ -19,5 +19,13 @@ public class GameLogic {
         return humanWins ? Result.HUMAN_WIN : Result.COMPUTER_WIN;
     }
 
+    public Move getWinningMove(Move opponentMove) {
+        return switch (opponentMove) {
+            case ROCK -> Move.PAPER;
+            case PAPER -> Move.SCISSORS;
+            case SCISSORS -> Move.ROCK;
+            default -> throw new IllegalArgumentException("Invalid move");
+        };
+    }
     
 }
