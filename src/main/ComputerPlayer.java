@@ -18,11 +18,17 @@ public class ComputerPlayer extends Player {
         return strat.computerStrategyMove();
     }
 
+    /**
+     * Processes the result of a completed round by delegating round information to the strategy
+     */
     @Override
-    public void addGameRoundHistory(Move playerMove, Move computerMove) {
+    public void processRound(Move playerMove, Move computerMove) {
         strat.addGameRoundHistory(playerMove, computerMove);
     }
 
+    /**
+     * Triggers the strategy to persist any stored data.
+     */
     @Override
     public void saveData(){
         strat.saveData();

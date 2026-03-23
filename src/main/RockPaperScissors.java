@@ -7,7 +7,8 @@ public class RockPaperScissors {
         GameData gameData = new GameData();
         int numberOfRounds = 20;
         Player humanPlayer = new HumanPlayer(scanner);
-        Player computerPlayer = new ComputerPlayer(UserSelection.getComputerStrategy(scanner, gameData));
+        String mode = ModeSelect.getMode(args, scanner);
+        Player computerPlayer = new ComputerPlayer(ComputerStrategyFactory.createStrategy(mode, gameData));
         ScoreBoard scoreBoard = new ScoreBoard();
         GameLogic gameLogic = new GameLogic();
         DisplayResult displayResult = new DisplayResult();
