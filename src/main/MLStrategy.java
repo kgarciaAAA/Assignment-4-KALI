@@ -10,15 +10,18 @@ import java.util.Random;
 public class MLStrategy implements ComputerStrategy {
     
     private final int PATTERN_SIZE = 4; // allows people to choose the amount of moves in a pattern
-
+    
+    private final GameLogic gameLogic;
+    private final GameData gameData;
     private final HashMap<List<Move>, int[]> moveFrequency;
     private final Queue<Move> moveHistory;
-    private final GameLogic gameLogic;
+    
 
-    public MLStrategy() {
-        this.moveFrequency = new HashMap<>();
-        this.moveHistory = new LinkedList<>();
+    public MLStrategy(GameData gameData) {
         this.gameLogic = new GameLogic();
+        this.gameData = gameData;
+        this.moveFrequency = gameData.loadData();
+        this.moveHistory = new LinkedList<>();
     }
 
     @Override
@@ -38,6 +41,7 @@ public class MLStrategy implements ComputerStrategy {
         return computerMove;
     }
 
+    @Override
     public void addGameRoundHistory(Move humanMove, Move computerMove) {
 
         // If the move history is the same as the pattern size, we can update the move frequency
@@ -72,7 +76,7 @@ public class MLStrategy implements ComputerStrategy {
     private List<Move> buildKey() {
         return new ArrayList<>(moveHistory);
     }
-
+    
     private void updateMoveHistory(Move move) {
         moveHistory.add(move);
         if (moveHistory.size() > PATTERN_SIZE) {
@@ -82,5 +86,10 @@ public class MLStrategy implements ComputerStrategy {
 
     private Move getRandomMove() {
         return Move.convertToMove(new Random().nextInt(3));
+    }
+
+    @Override
+    public void saveData() {
+        gameData.saveData(moveFrequency);
     }
 }

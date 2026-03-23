@@ -64,6 +64,15 @@ public enum Move {
         };
     }
 
+    public static Move convertFromString(String strMove) {
+        return switch(strMove.toLowerCase()) {
+            case "rock" -> Move.ROCK;
+            case "paper" -> Move.PAPER;
+            case "scissors" -> Move.SCISSORS;
+            default -> throw new IllegalArgumentException("Invalid move");
+        };
+    }
+
     /**
      * Returns the name of the move with the first letter capitalized
      * and the rest in lowercase ("Rock", "Paper", "Scissors").
