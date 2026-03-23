@@ -31,6 +31,7 @@ public class Game {
 
             Result roundResult = gameRound.getRoundResult();
             displayResult.printRoundResult(gameRound.getHumanMove(), gameRound.getComputerMove(), roundResult);
+            
             scoreBoard.recordResult(roundResult);
             scoreBoard.displayScore();
 
