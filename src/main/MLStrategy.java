@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class MLStrategy implements ComputerStrategy {
     
-    private static final int PATTERN_SIZE = 4; // allows people to choose the amount of moves in a pattern
+    private final int PATTERN_SIZE = 4; // allows people to choose the amount of moves in a pattern
 
     private final HashMap<List<Move>, int[]> moveFrequency;
     private final Queue<Move> moveHistory;
@@ -21,13 +21,8 @@ public class MLStrategy implements ComputerStrategy {
         this.gameLogic = new GameLogic();
     }
 
-    // TODO: Will be removed later and replaced with the actual ML strategy
     @Override
     public Move computerStrategyMove() {
-        return Move.PAPER; //Place Holder
-    }
-
-    public Move computerStrategyMove(Move humanMove) {
         Move computerMove;
 
         // If the move history is the same as the pattern size, we can try topredict the next move
@@ -40,6 +35,11 @@ public class MLStrategy implements ComputerStrategy {
             computerMove = getRandomMove();
         }
 
+        return computerMove;
+    }
+
+    public void addGameRoundHistory(Move humanMove, Move computerMove) {
+
         // If the move history is the same as the pattern size, we can update the move frequency
         if (moveHistory.size() == PATTERN_SIZE) {
             List<Move> key = buildKey();
@@ -50,8 +50,7 @@ public class MLStrategy implements ComputerStrategy {
 
         updateMoveHistory(humanMove);
         updateMoveHistory(computerMove);
-
-        return computerMove;
+        
     }
 
     private Move getExpectedPlayerMove(List<Move> key) {
