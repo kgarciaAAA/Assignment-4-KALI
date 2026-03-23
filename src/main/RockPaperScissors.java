@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class RockPaperScissors {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int numberOfRounds = 20;
+        int numberOfRounds = 100;
         Player humanPlayer = new HumanPlayer(scanner);
         Player computerPlayer = new ComputerPlayer(UserSelection.getComputerStrategy(scanner));
         ScoreBoard scoreBoard = new ScoreBoard();

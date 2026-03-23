@@ -43,14 +43,12 @@ public class MLStrategy implements ComputerStrategy {
         // If the move history is the same as the pattern size, we can update the move frequency
         if (moveHistory.size() == PATTERN_SIZE) {
             List<Move> key = buildKey();
-            int[] freq = (moveFrequency.get(key) == null) ? new int[3] : moveFrequency.get(key);
-            // increment the frequency of the human move RPS order (0 = Rock, 1 = Paper, 2 = Scissors)
-            freq[humanMove.ordinal()]++; 
+            int[] freq = moveFrequency.computeIfAbsent(key, k -> new int[3]); // create a new array if the pattern is not found
+            freq[humanMove.ordinal()]++; // increment the frequency of the human move RPS order (0 = Rock, 1 = Paper, 2 = Scissors)
         }
 
         updateMoveHistory(humanMove);
-        updateMoveHistory(computerMove);
-        
+        updateMoveHistory(computerMove);        
     }
 
     private Move getExpectedPlayerMove(List<Move> key) {
