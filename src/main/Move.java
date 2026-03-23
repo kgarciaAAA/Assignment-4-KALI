@@ -64,6 +64,12 @@ public enum Move {
         };
     }
 
+    /**
+     * Converts a string into the proper corresponding Move.
+     * @param strMove string containing a move ("rock", "paper", or "scissors")
+     * @return the Move corresponding to the string
+     * @throws IllegalArgumentException if the string is not a valid move
+     */
     public static Move convertFromString(String strMove) {
         return switch(strMove.toLowerCase()) {
             case "rock" -> Move.ROCK;

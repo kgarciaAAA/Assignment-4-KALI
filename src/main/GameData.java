@@ -11,6 +11,11 @@ import java.util.Scanner;
 public class GameData {
     private final HashMap<List<Move>, int[]> moveFrequency = new HashMap<>();
 
+
+    /**
+     * Loads move frequency data from a file into a HashMap.
+     * @return a map containing move patterns and their corresponding frequencies
+     */
     public HashMap<List<Move>, int[]> loadData(){
         try {
             Scanner scanner = new Scanner(new File("data.txt"));
@@ -35,7 +40,11 @@ public class GameData {
         }
         return moveFrequency;
     }
-
+    
+    /**
+     * Saves the current move frequency data to a file.
+     * Each entry consists of a sequence of moves followed by frequency counts.
+     */
     public void saveData(HashMap<List<Move>, int[]> updatedMoveFrequency) {
         try {
             PrintWriter write = new PrintWriter(new File("data.txt"));

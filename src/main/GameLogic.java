@@ -19,6 +19,12 @@ public class GameLogic {
         return humanWins ? Result.HUMAN_WIN : Result.COMPUTER_WIN;
     }
 
+    /**
+     * Returns the move that would defeat the opponent's move.
+     * @param opponentMove the move to check
+     * @return Move that beats the opponent's move
+     * @throws IllegalArgumentException if the move is invalid
+     */
     public Move getWinningMove(Move opponentMove) {
         return switch (opponentMove) {
             case ROCK -> Move.PAPER;
